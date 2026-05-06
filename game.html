@@ -3,30 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic-Tac-Toe</title>
+    <title>Tic-Tac-Toe Pro</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
     <button class="theme-toggle" id="themeToggle">Dark Mode</button>
 
-    <h1>Tic-Tac-Toe</h1>
-    <div class="status" id="status">Player X's turn</div>
-    
-    <div class="board" id="board">
-        <div class="cell" data-index="0"></div>
-        <div class="cell" data-index="1"></div>
-        <div class="cell" data-index="2"></div>
-        <div class="cell" data-index="3"></div>
-        <div class="cell" data-index="4"></div>
-        <div class="cell" data-index="5"></div>
-        <div class="cell" data-index="6"></div>
-        <div class="cell" data-index="7"></div>
-        <div class="cell" data-index="8"></div>
+    <div class="setup-container">
+        <div class="input-group">
+            <input type="text" id="player1Name" placeholder="Player X Name" maxlength="12">
+            <input type="text" id="player2Name" placeholder="Player O Name" maxlength="12">
+        </div>
+        <div class="mode-group">
+            <select id="gameMode">
+                <option value="pvp">Player vs Player</option>
+                <option value="easy">vs AI (Easy)</option>
+                <option value="hard">vs AI (Hard)</option>
+            </select>
+        </div>
     </div>
 
-    <div class="controls">
-        <button class="btn" id="resetBtn">Restart Game</button>
+    <div class="scoreboard">
+        <div class="score-item" id="scoreXContainer">
+            <span class="score-label" id="labelX">Player X</span>
+            <span class="score-value" id="scoreX">0</span>
+        </div>
+        <div class="score-item">
+            <span class="score-label">Draws</span>
+            <span class="score-value" id="scoreDraw">0</span>
+        </div>
+        <div class="score-item" id="scoreOContainer">
+            <span class="score-label" id="labelO">Player O</span>
+            <span class="score-value" id="scoreO">0</span>
+        </div>
+    </div>
+
+    <div class="status" id="status">Ready to play!</div>
+    
+    <div class="main-layout">
+        <div class="board-container">
+            <div class="board" id="board">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
+            </div>
+            
+            <div class="controls">
+                <button class="btn" id="resetBtn">Restart Game</button>
+                <button class="btn btn-secondary" id="undoBtn">Undo Move</button>
+            </div>
+        </div>
+
+        <div class="history-panel">
+            <h3>Move History</h3>
+            <ul id="historyList">
+                <li class="empty-history">No moves yet</li>
+            </ul>
+        </div>
     </div>
 
     <script src="script.js"></script>
